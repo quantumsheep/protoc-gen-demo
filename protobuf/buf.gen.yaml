@@ -1,0 +1,24 @@
+version: v1
+plugins:
+  - plugin: buf.build/protocolbuffers/go
+    out: ../go
+    opt:
+      - paths=source_relative
+  - plugin: buf.build/grpc/go
+    out: ../go
+    opt:
+      - paths=source_relative
+  - plugin: grpc-gateway
+    out: ../go
+    opt:
+      - paths=source_relative
+  - plugin: validate
+    out: ../go
+    opt:
+      - paths=source_relative
+      - lang=go
+
+  # - plugin: demo-go
+  #   out: ./demo-go
+  #   opt:
+  #     - paths=source_relative

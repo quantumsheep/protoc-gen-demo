@@ -1,0 +1,20 @@
+package: demo.greeter.v1
+services:
+  GreeterService:
+    title: Greeter Service API
+    short: Greetings service
+    long: The Greeter Service API is a simple API that allows users to send greetings to each other.
+    version: v1
+
+    visibility: public
+
+    openapi:
+      enabled: true
+      long: |
+        # Introduction
+
+        The Greeter Service API is a simple API that allows users to send greetings to each other.
+    cli:
+      enabled: true
+    sdk:
+      enabled: true

@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package demo.greeter.v1;
+
+import "google/api/annotations.proto";
+import "validate/validate.proto";
+
+option go_package = "github.com/scaleway/protobuf/go/greeter/v1;greeterv1";
+
+service GreeterService {
+  rpc SayHello(SayHelloRequest) returns (SayHelloResponse) {
+    option (google.api.http) = {
+      post : "/greeter/v1/hello"
+      body : "*"
+    };
+  }
+
+  rpc SayGoodbye(SayGoodbyeRequest) returns (SayGoodbyeResponse) {
+    option (google.api.http) = {
+      post : "/greeter/v1/goodbye"
+      body : "*"
+    };
+  }
+}
+
+message SayHelloRequest {
+  string name = 1 [ (validate.rules).string.min_len = 2 ];
+}
+
+message SayHelloResponse { string message = 1; }
+
+message SayGoodbyeRequest {
+  string name = 1 [ (validate.rules).string.min_len = 2 ];
+}
+
+message SayGoodbyeResponse { string message = 1; }
